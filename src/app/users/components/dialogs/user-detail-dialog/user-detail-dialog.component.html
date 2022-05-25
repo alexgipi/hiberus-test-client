@@ -1,0 +1,39 @@
+<div class="dialog-header">
+  <h2 class="title" mat-dialog-title>Detalle de usuario</h2>
+</div>
+
+
+<mat-dialog-content class="mat-typography">
+  <div class="user-detail">
+    <div class="user-detail__item">
+      <strong>Nombre:</strong> {{user.name}}
+    </div>
+    <div class="user-detail__item">
+      <strong>Apellido:</strong> {{user.surname}}
+    </div>
+    <div class="user-detail__item">
+      <strong>Email:</strong> {{user.email}}
+    </div>
+    <div *ngIf="user.role" class="user-detail__item">
+      <strong>Rol:</strong> {{user.role}}
+    </div>
+    <div class="user-detail__item">
+      <strong>Creado el:</strong> {{user.createdAt | date }}
+    </div>
+    <div class="user-detail__item">
+      <strong>Editado el:</strong> {{user.updatedAt | date}}
+    </div>
+  </div>
+  
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions--space-between">
+  
+  <svg (click)="deleteUser()" mat-dialog-close class="remove-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z"/></svg>
+  
+  <div>
+    <button mat-stroked-button (click)="modalUserUpdate()" mat-dialog-close>Editar</button>
+    <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial>Cerrar</button>
+  </div>
+  
+</mat-dialog-actions>

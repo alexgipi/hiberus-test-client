@@ -1,0 +1,40 @@
+<div class="auth-page">
+    <div class="auth-page__background unGray"></div>
+    <form [formGroup]="loginForm" (submit)="login()" class="auth-form">
+        <h1>Iniciar sesión</h1>
+        <p class="desc">Introduce tus detalles de inicio de sesión.</p>
+
+        <div class="auth-form__content">
+            <div class="auth-form__item" [class.error]="loginForm.controls['email'].invalid && loginForm.controls['email'].value.length > 0 || loginForm.controls['email'].touched && loginForm.controls['email'].value.length === 0">
+                <label for="email">
+                    Email 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="email" type="email" id="email" placeholder="Introduce tu email">
+                
+                <span class="error-label" *ngIf="loginForm.controls['email'].hasError('email')">
+                    Introduce un email valido.
+                </span> 
+            </div>
+
+            <div class="auth-form__item" [class.error]="loginForm.controls['password'].hasError('required') && loginForm.controls['password']?.touched">
+                <label for="password">
+                    Contraseña 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="password" type="password" id="password" placeholder="Introduce tu contraseña">
+            </div>
+        </div>
+
+        <div class="auth-form__actions">
+            <button [disabled]="!loginForm.valid" class="btn">Iniciar sesión</button>
+            <p class="no-account-message">¿No tienes una cuenta? <a [routerLink]="'/register'">Regístrate</a></p>
+
+            
+        </div>
+    </form>
+    
+    
+</div>

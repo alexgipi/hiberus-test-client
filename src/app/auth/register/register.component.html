@@ -1,0 +1,86 @@
+<div class="auth-page">
+    <div class="auth-page__background unGray"></div>
+    <form [formGroup]="registerForm" (submit)="register()" class="auth-form">
+        <h1>Registrarse</h1>
+        <p class="desc">Llena el formulario para crear tu cuenta.</p>
+
+        <div class="auth-form__content">
+            <div class="auth-form__item" [class.error]="registerForm.controls['name'].invalid && registerForm.controls['name']?.touched">
+                <label for="name">
+                    Nombre 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="name" type="text" id="name" placeholder="Introduce tu nombre">
+            </div>
+
+            <div class="auth-form__item" [class.error]="registerForm.controls['surname'].invalid && registerForm.controls['surname']?.touched">
+                <label for="surname">
+                    Apellido 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="surname" type="text" id="surname" placeholder="Introduce tu apellido">  
+            </div>
+
+            <div class="auth-form__item" [class.error]="registerForm.controls['email'].invalid && registerForm.controls['email'].value.length > 0 || registerForm.controls['email'].touched && registerForm.controls['email'].value.length === 0">
+                <label for="email">
+                    Email 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="email" type="email" id="email" placeholder="Introduce tu email">
+                
+                <span class="error-label" *ngIf="registerForm.controls['email'].hasError('email')">
+                    Introduce un email valido.
+                </span> 
+            </div>
+
+            <div class="auth-form__item" [class.error]="registerForm.controls['password'].invalid && registerForm.controls['password'].value.length > 0 || registerForm.controls['password'].touched && registerForm.controls['password'].value.length === 0">
+                <label for="password">
+                    Contraseña 
+                    <span class="required-field-icon">*</span>
+                </label>
+
+                <input class="box-input" formControlName="password" type="password" id="password" placeholder="Introduce tu nueva contraseña">
+
+                <span class="error-label" *ngIf="registerForm.controls['password'].hasError('minlength')">
+                    Debe contener minimo 6 caracteres
+                </span>
+                <span class="error-label" *ngIf="registerForm.controls['password'].hasError('maxlength')">
+                    Debe contener máximo 25 caracteres
+                </span>
+                <span class="error-label" *ngIf="registerForm.controls['password'].hasError('hasNumber')">
+                    Debe contener 1 numero
+                </span>
+                <span class="error-label" *ngIf="registerForm.controls['password'].hasError('hasCapitalCase')">
+                    Debe contener 1 letra Mayuscula
+                </span>
+                <span class="error-label" *ngIf="registerForm.controls['password'].hasError('hasSmallCase')">
+                    Debe contener 1 letra Minuscula
+                </span>
+            </div>
+        </div>
+
+        <div class="auth-form__item" [class.error]="registerForm.controls['terms'].invalid && registerForm.controls['terms']?.touched">
+            <label for="terms" class="terms">
+                <input formControlName="terms" type="checkbox" id="terms">
+                Acepto las <a href="#">condiciones de uso</a>
+                <span *ngIf="registerForm.controls['terms'].hasError('required')" class="required-field-icon">*</span>
+            </label>
+
+              
+        </div>
+
+        <span *ngFor="let error of errors;" class="error-label">
+            {{error.msg}}
+        </span>
+
+        <div class="auth-form__actions">
+            <button [disabled]="!registerForm.valid" class="btn">Crear cuenta</button>
+            <p class="no-account-message">¿Ya tienes una cuenta? <a [routerLink]="['/login']">Entrar</a></p>
+        </div>
+    </form>
+    
+    
+</div>

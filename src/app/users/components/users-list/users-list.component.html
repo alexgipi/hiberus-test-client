@@ -1,0 +1,8 @@
+<div class="spaceContent">
+    <div class="users-list" infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="loadMore()">
+        <app-user-card (onDeleted)="onUserDeleted($event)" [user]="user" *ngFor="let user of users"></app-user-card>
+    </div>
+</div>

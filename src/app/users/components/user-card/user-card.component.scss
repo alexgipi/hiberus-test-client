@@ -1,0 +1,102 @@
+.users-list {
+    &__item {
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        background: #fff;
+        border-radius: 16px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            header {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        header {
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            position: absolute;
+            top: 0;
+            padding: 22px;
+            display: flex;
+            justify-content: flex-end;
+
+            .more-icon {
+                cursor: pointer;
+                fill: #43598e;
+            }
+        }
+    
+        .avatar {
+            display: flex;
+            svg {
+                width: 160px;
+                height: 170px;
+                opacity: 0.1;
+            }
+        }
+
+        .details {
+            .name,.email, .role {
+                text-align: center;
+            }
+
+            .name {
+                margin: 20px 0 10px;
+                color: #43598e;
+                font-weight: 500;
+            }
+
+            .email {
+                margin-bottom: 10px;
+                color: #6a6a6a;
+            }
+
+            .role {
+                font-size: 0.84em;
+                font-weight: 500;
+                color: #758f00;
+            }
+        }
+
+        .actions {
+            .btn {
+                background: #43598e;
+                padding: 10px 18px;
+                border: none;
+                margin-top: 22px;
+                border-radius: 8px;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media(max-width:1000px){
+    .users-list__item {
+        header {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+@media(max-width:360px){
+    .users-list {
+        &__item {
+            .avatar svg {
+                width: 56%;
+                height: auto;
+                margin: 0 auto;
+            }
+        }
+    }
+}

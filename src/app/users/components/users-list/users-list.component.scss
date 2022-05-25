@@ -1,0 +1,13 @@
+.users-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: grid;
+    grid-gap: 30px;
+    padding: 30px;
+
+}
+
+@media(max-width:360px){
+    .users-list {
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+}

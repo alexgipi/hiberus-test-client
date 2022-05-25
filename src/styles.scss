@@ -1,1 +1,354 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+a {
+    text-decoration: none;
+}
+
+.spaceContent {
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.main-header {
+    width: 100%;
+    min-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    background: #fff;
+
+    &__left, &__center, &__right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    &__left {
+        justify-content: left;
+    }
+
+    &__center {
+        justify-content: center;
+    }
+
+    &__right {
+        justify-content: flex-end;
+    }
+
+    .logo {
+        height: 26px;
+    }
+
+    .btn {
+        padding: 14px 21px;
+        background: #32436d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 500;
+        line-height: 1;
+        margin-left: 12px;
+        white-space: nowrap;
+
+        &--logged-user {
+            display: flex;
+            align-items: center;
+            background: #eeeeee7d;
+            color: #283657;
+            border-radius: 54px;
+            padding: 12px 20px 12px 16px;
+            cursor: pointer;
+
+            svg.user-profile {
+                width: 26px;
+                height: 26px;
+                margin-right: 8px;
+
+                path {
+                    fill: #43598e;
+                }
+            }
+
+            svg.caret {
+                width: 18px;
+                height: 18px;
+                margin-left: 9px;
+            }
+        }
+    }
+
+    
+
+    .link-to-me {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #32436d;
+        padding: 10px 15px 10px 10px;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        font-weight: 500;
+
+        svg {
+            margin-right: 10px;
+            fill: #32436d;
+        }
+    }
+
+}
+
+
+.identity-menu {
+    margin-top: 10px;
+    border: 1px solid #eee;
+}
+
+button.mat-menu-item {
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-right: 6px;
+        fill: #43598e;
+    }
+}
+
+
+
+// Auth pages
+.auth-page {
+    min-height: calc(100vh - 90px);
+    padding: 7px 14px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff;
+
+    &__background {
+        background: url(https://www.hiberus.com/sites/default/files/gadget/metadata_container_render_properties/IMG_8007_14.png) #fff;
+        background-size: cover;
+        background-position: top center;
+        filter: grayscale(1);
+        transition: all 0.3s;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+    h1 {
+        line-height: 1;
+        margin-top: 0;
+        color: #283657;
+        font-weight: 500;
+    }
+
+    .desc {
+        color: #636363;
+    }
+
+    .no-account-message {
+        margin: 18px 0 0;
+
+        a {
+            font-weight: 500;
+            color: #a3bd31;
+            text-decoration: none;
+        }
+    }
+}
+
+.auth-form {
+    position: relative;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 1px 1px 10px #5f5f5f14;
+
+    &__content {
+        margin-top: 30px;
+    }
+
+    &__item {
+        margin-bottom: 16px;
+
+        
+        &:last-child {
+            margin: 0;
+        }
+
+        label {
+            display: inline-block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #283657;
+
+            &.terms {
+                display: flex;
+                margin-top: 12px;
+                align-items: center;
+                font-size: 0.9em;
+                font-weight: normal;
+                color: #333;
+
+                input {
+                    margin-right: 6px;
+                }
+
+                a {
+                    margin: 0 4px;
+                    color: #43598e;
+                }
+            }
+        }
+
+        
+
+        .box-input {
+            padding: 10px;
+            background-color: #ffffff54 !important;
+            border-radius: 4px;
+            outline: none;
+            width: 100%;
+            border: 1px solid #e0e0e0;                
+        }
+
+
+        &.error {
+            input {
+                border-color: red;
+            }
+
+            .required-field-icon {
+                color: red;
+            }
+        }
+
+        
+    }
+
+    .error-label {
+        color: red;
+        display: block;
+        font-size: 0.84em;
+        margin-top: 5px;
+    }
+    
+    &__actions {
+        margin-top: 20px;
+        .btn {
+            background-color: #32436d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &--update {
+        padding: 0;
+        box-shadow: unset;
+
+        .auth-form {
+            &__content {
+                margin-top: 0;
+            }
+        }
+        
+    }
+}
+
+
+// Dialogs
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .title {
+        margin-bottom: 0;
+    }
+    .dialog-close-icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+.mat-dialog-actions.dialog-actions--space-between {
+    justify-content: space-between;
+}
+
+.user-detail {
+    &__item {
+        margin-bottom: 20px;
+        strong {
+            font-weight: 500;
+        }
+    }
+}
+
+.remove-icon {
+    margin-right: 30px;
+    fill: #8a8a8a;
+    cursor: pointer;
+}
+
+
+// Grayscale animation
+@keyframes unGray{
+	100%{filter: grayscale(0%);}
+	0%{filter: grayscale(100%);}
+}
+
+.unGray {
+    animation: unGray 7s 1;
+    animation-delay: 2s;
+
+    animation-fill-mode: forwards;
+}
+
+
+// Responsive
+@media(max-width:800px) {
+    .main-header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 0;
+
+        .btn {
+            margin-left: 0;
+        }
+    }
+
+    .auth-page {
+        justify-content: unset;
+        min-height: calc(100vh - 184px);
+
+        &__background {
+            position: fixed;
+            top: 184px;
+        }
+    }
+}
+
+
